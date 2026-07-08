@@ -1,0 +1,35 @@
+baseURL = "https://go-facter.github.io/"
+title = "go-facter"
+disableKinds = ["taxonomy", "term", "RSS", "sitemap", "404"]
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[[params.phases]]
+  name = "Resolver framework"
+  status = "ready"
+  blurb = "Lazy, per-run-cached facts with a dotted-path `Value` query, `ToHash` aggregate, and `Add` / `AddFunc` custom-fact registration — the stable surface a Ruby binding maps onto `Facter.value` / `Facter[]` / `Facter.add` / `Facter.to_hash`."
+[[params.phases]]
+  name = "OS, kernel & identity"
+  status = "ready"
+  blurb = "`os` (name/family/release/distro, `os.macosx` on Darwin, architecture) from `/etc/os-release`, `sw_vers` and the Windows version banner; `kernel*`; `identity` (user/group/uid/gid/privileged); `timezone`; `path`; `facterversion`."
+[[params.phases]]
+  name = "Networking"
+  status = "ready"
+  blurb = "`networking` with hostname / fqdn / domain and a per-interface map — ip/ip6/mac/mtu/netmask/network plus the `bindings` / `bindings6` arrays and the elected `primary` — mirrored to the legacy `ipaddress` / `macaddress` / `interfaces` aliases."
+[[params.phases]]
+  name = "Hardware & storage"
+  status = "ready"
+  blurb = "`processors` (count/physicalcount/models/isa), `memory` (system + swap, bytes and human sizes), `mountpoints`, `filesystems` and `disks` — parsed from `/proc`, `sysctl` / `vm_stat`, `df` and `/sys/block`, skipped gracefully where a platform can't provide one."
+[[params.phases]]
+  name = "Virtualization & uptime"
+  status = "ready"
+  blurb = "`virtual` / `is_virtual` — hypervisor detection via DMI and the CPU hypervisor flag, container detection via docker/podman markers and cgroups — plus `system_uptime` and its `uptime*` aliases."
+[[params.phases]]
+  name = "Custom & external facts"
+  status = "ready"
+  blurb = "In-process custom facts through the Go registration API, and out-of-process external facts from `facts.d` directories — JSON, YAML and key=value `.txt`, plus executable facts. This is the seam the Ruby custom-fact DSL binds onto."
+[[params.phases]]
+  name = "Ruby surface"
+  status = "planned"
+  blurb = "Downstream, not part of this engine module: the sibling `go-ruby-facter` binds Ruby's Facter API (`Facter.value` / `[]` / `add` / `to_hash`, the custom-fact DSL) onto this engine so Puppet manifests and Ruby code under `rbgo` can resolve facts."

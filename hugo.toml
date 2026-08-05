@@ -26,6 +26,10 @@ disableKinds = ["taxonomy", "term", "RSS", "sitemap", "404"]
   status = "ready"
   blurb = "`virtual` / `is_virtual` — hypervisor detection via DMI and the CPU hypervisor flag, container detection via docker/podman markers and cgroups — plus `system_uptime` and its `uptime*` aliases."
 [[params.phases]]
+  name = "DMI, SSH, security & cloud"
+  status = "ready"
+  blurb = "Facter 4 parity facts: `dmi` (bios / board / chassis / product, with the `bios_*` / `productname` / `serialnumber` / `uuid` aliases), `ssh` host keys with pure-Go SSHFP fingerprints, `selinux`, `load_averages`, `cloud` / `ec2_metadata` (bounded, non-blocking probe), `ruby`, `fips_enabled`, `aio_agent_version`, `augeasversion`."
+[[params.phases]]
   name = "Custom & external facts"
   status = "ready"
   blurb = "In-process custom facts through the Go registration API, and out-of-process external facts from `facts.d` directories — JSON, YAML and key=value `.txt`, plus executable facts. This is the seam the Ruby custom-fact DSL binds onto."
